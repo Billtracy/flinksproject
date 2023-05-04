@@ -15,10 +15,10 @@ class Captcha implements Rule
 
     public function passes($attribute, $value)
     {
-        $recaptchaSetting = GoogleRecaptcha::first();
-        $recaptcha=new ReCaptcha($recaptchaSetting->secret_key);
-        $response=$recaptcha->verify($value, $_SERVER['REMOTE_ADDR']);
-        return $response->isSuccess();
+        // $recaptchaSetting = GoogleRecaptcha::first();
+        // $recaptcha=new ReCaptcha($recaptchaSetting->secret_key);
+        // $response=$recaptcha->verify($value, $_SERVER['REMOTE_ADDR']);
+        // return $response->isSuccess();
     }
 
     /**
