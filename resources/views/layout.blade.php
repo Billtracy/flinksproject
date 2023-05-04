@@ -116,7 +116,7 @@
     <nav class="navbar navbar-expand-lg main_menu">
         <div class="container">
             <a class="navbar-brand" href="{{ route('home') }}">
-                <img src="{{ asset($setting->logo ?? "") }}" alt="logo" class="img-fluid">
+                <img src="{{ asset($setting->logo ?? "") }}" alt="logo" class="img-fluid" style="height: 50px !important; width: 100px !important;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
