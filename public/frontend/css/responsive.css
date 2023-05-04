@@ -2124,7 +2124,7 @@
 
     .main_menu {
         height: 70px;
-        top: 47px;
+        top: 47px !important;
     }
 
     .main_menu .nav-item .nav-link {
