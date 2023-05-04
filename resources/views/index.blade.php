@@ -24,7 +24,7 @@
                         <form action="{{ route('services') }}">
                             <ul class="wsus__banner_search d-flex flex-wrap">
                                 <li>
-                                    <p>{{__('user.I am looking to')}}..</p>
+                                    <p>I am in..</p>
                                     <select name="service_area" class="select_2">
                                         <option value="">{{__('user.Select Location')}}</option>
                                         @foreach ($service_areas as $service_area)

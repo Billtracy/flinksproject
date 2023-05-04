@@ -289,7 +289,7 @@
   'Did Your forget your password ? Don\\\'t worry. Please submit below form using your email, and get a reset password link.' => 'Did Your forget your password ? Don\\\'t worry. Please submit below form using your email, and get a reset password link.',
   'Send Reset Link' => 'Send Reset Link',
   'Already have an account ?' => 'Already have an account ?',
-  'I am looking to' => 'I\'m looking to',
+  'I am looking to' => 'I\'m looking for',
   'Select Location' => 'Select Location',
   'Find Categories' => 'Find Categories',
   'search' => 'search',
