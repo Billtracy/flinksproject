@@ -69,8 +69,7 @@ class LoginController extends Controller
     public function storeLogin(Request $request){
         $rules = [
             'email'=>'required',
-            'password'=>'required',
-            'g-recaptcha-response'=>new Captcha()
+            'password'=>'required'
         ];
         $customMessages = [
             'email.required' => trans('user_validation.Email is required'),

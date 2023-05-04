@@ -58,8 +58,7 @@ class RegisterController extends Controller
         $rules = [
             'name'=>'required',
             'email'=>'required|unique:users',
-            'password'=>'required|min:4',
-            'g-recaptcha-response'=>new Captcha()
+            'password'=>'required|min:4'
         ];
         $customMessages = [
             'name.required' => trans('user_validation.Email is required'),
