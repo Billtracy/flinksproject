@@ -65,7 +65,7 @@
     ==========================-->
     @endif
 
-    @if ($category_section->visibility)
+    @if ($category_section->visibility && !$categories->isEmpty())
     <!--=========================
         CATEGORIES START
     ==========================-->
@@ -100,8 +100,7 @@
 
     @endif
 
-
-@if ($featured_service_section->visibility)
+@if ($featured_service_section->visibility && !$featured_services->isEmpty())
     <!--=========================
         FEATURED SERVICES START
     ==========================-->
@@ -223,8 +222,7 @@
     ==========================-->
 @endif --}}
 
-
-@if ($popular_service_section->visibility)
+@if ($popular_service_section->visibility && !$popular_services->isEmpty())
     <!--=========================
         POPULAR SERVICES START
     ==========================-->
@@ -342,7 +340,7 @@
         @endif
 
 
-    @if ($mobile_app_section_visbility)
+    {{-- @if ($mobile_app_section_visbility)
 
     <!--=========================
         APP DOWNLOAD START
@@ -382,9 +380,9 @@
     <!--=========================
         APP DOWNLOAD END
     ==========================-->
-    @endif
+    @endif --}}
 
-    @if ($testimonial_section->visibility)
+    @if ($testimonial_section->visibility && !$testimonials->isEmpty())
     <!--=========================
         TESTIMONIAL START
     ==========================-->
@@ -419,7 +417,7 @@
     ==========================-->
     @endif
 
-    @if ($blog_section->visibility)
+    @if ($blog_section->visibility && !$blogs->isEmpty())
 
     <!--=========================
         BLOG START

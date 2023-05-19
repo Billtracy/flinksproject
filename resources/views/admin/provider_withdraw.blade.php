@@ -38,7 +38,7 @@
                                     <tr>
                                         <td>{{ ++$index }}</td>
                                         <td>
-                                            <a href="{{ route('admin.provider-show', $withdraw->user_id) }}">{{ $withdraw->provider->name }}</a>
+                                            <a href="{{ route('admin.provider-show', $withdraw->user_id) }}">{{ $withdraw->provider->name ?? "" }}</a>
                                         </td>
                                         <td>{{ $withdraw->method }}</td>
                                         <td>{{ $setting->currency_icon }}{{ $withdraw->total_amount - $withdraw->withdraw_amount }}</td>

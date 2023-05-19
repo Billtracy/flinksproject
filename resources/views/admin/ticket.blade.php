@@ -34,25 +34,25 @@
                                         <td>
                                             @if ($ticket->ticket_from == 'Client')
                                                 <p>
-                                                    {{__('admin.Name')}}: <a href="{{ route('admin.customer-show',$ticket->user->id) }}">{{ $ticket->user->name }}</a>
+                                                    {{__('admin.Name')}}: <a href="{{ route('admin.customer-show',$ticket->user->id ?? "") }}">{{ $ticket->user->name ?? "" }}</a>
                                                 </p>
                                                 <p>{{__('admin.User Type')}} : {{__('admin.Client')}}</p>
-                                                <p>{{__('admin.Email')}} : {{ $ticket->user->email  }}</p>
-                                                <p>{{__('admin.Phone')}} : {{ $ticket->user->Phone  }}</p>
+                                                <p>{{__('admin.Email')}} : {{ $ticket->user->email ?? "" }}</p>
+                                                <p>{{__('admin.Phone')}} : {{ $ticket->user->Phone ?? ""  }}</p>
                                             @else
                                                 <p>
-                                                    {{__('admin.Name')}}: <a href="{{ route('admin.provider-show',$ticket->user->id) }}">{{ $ticket->user->name }}</a>
+                                                    {{__('admin.Name')}}: <a href="{{ route('admin.provider-show',$ticket->user->id ?? "") }}">{{ $ticket->user->name ?? "" }}</a>
                                                 </p>
 
                                                 <p>{{__('admin.User Type')}} : {{__('admin.Provider')}}</p>
-                                                <p>{{__('admin.Email')}} : {{ $ticket->user->email  }}</p>
-                                                <p>{{__('admin.Phone')}} : {{ $ticket->user->Phone  }}</p>
+                                                <p>{{__('admin.Email')}} : {{ $ticket->user->email ?? ""  }}</p>
+                                                <p>{{__('admin.Phone')}} : {{ $ticket->user->Phone ?? ""  }}</p>
                                             @endif
                                         </td>
                                         <td>
                                             <p>{{__('admin.Subject')}}: {{ html_decode($ticket->subject) }}</p>
                                             <p>{{__('admin.Ticket Id')}}: {{ $ticket->ticket_id }}</p>
-                                            <p>{{__('admin.Booking Id')}}: <a href="{{ route('admin.booking-show',$ticket->order->order_id) }}">{{ $ticket->order->order_id }}</a></p>
+                                            <p>{{__('admin.Booking Id')}}: <a href="{{ route('admin.booking-show',$ticket->order->order_id ?? "") }}">{{ $ticket->order->order_id ?? "" }}</a></p>
                                             <p>{{__('admin.Created')}}: {{ $ticket->created_at->format('h:m A, d-M-Y') }}</p>
                                         </td>
 

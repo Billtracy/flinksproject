@@ -48,7 +48,7 @@ class ProviderWithdrawController extends Controller
         $withdraw->delete();
         $notification = trans('admin_validation.Delete Successfully');
         $notification=array('messege'=>$notification,'alert-type'=>'success');
-        return redirect()->route('admin.seller-withdraw')->with($notification);
+        return redirect()->route('admin.provider-withdraw')->with($notification);
     }
 
     public function approvedWithdraw($id){
