@@ -308,7 +308,7 @@
   'Choose a image PNG, JPEG, JPG' => 'Choose a image PNG, JPEG, JPG',
   'Note' => 'Note',
   'Max File Size 2MB' => 'Max File Size 2MB',
-  'Provider Name' => 'Provider Name',
+  'Provider Name' => 'Your Name',
   'User Name' => 'User Name',
   'Password' => 'Password',
   'Confirmation Password' => 'Confirmation Password',
