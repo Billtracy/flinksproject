@@ -24,7 +24,7 @@
                             <tr>
                                 <td width="50%">{{__('admin.Provider')}}</td>
                                 <td width="50%">
-                                    <a href="{{ route('admin.provider-show', $withdraw->user_id) }}">{{ $withdraw->provider->name }}</a>
+                                    <a href="{{ route('admin.provider-show', $withdraw->user_id) }}">{{ $withdraw->provider->name ?? "" }}</a>
                                 </td>
                             </tr>
                             <tr>
