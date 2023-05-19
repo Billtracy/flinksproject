@@ -108,7 +108,7 @@ Route::group(['middleware' => ['maintainance']], function () {
 
 
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/join-as-a-provider', [HomeController::class, 'join_as_a_provider'])->name('join-as-a-provider');
+    Route::get('/become-a-handyman', [HomeController::class, 'join_as_a_provider'])->name('become-a-handyman');
     Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
     Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
     Route::post('/send-contact-message', [HomeController::class, 'sendContactMessage'])->name('send-contact-message');
@@ -385,7 +385,7 @@ Route::group(['as'=> 'admin.', 'prefix' => 'admin'],function (){
     Route::resource('testimonial', TestimonialController::class);
     Route::put('testimonial-status/{id}', [TestimonialController::class,'changeStatus'])->name('testimonial.status');
 
-    Route::get('join-as-a-provider', [ContentController::class, 'joinAsAProvider'])->name('join-as-a-provider');
+    Route::get('become-a-handyman', [ContentController::class, 'joinAsAProvider'])->name('become-a-handyman');
     Route::put('update-join-as-a-provider', [ContentController::class, 'updatejoinAsAProvider'])->name('update-join-as-a-provider');
 
     Route::get('mobile-app', [ContentController::class, 'mobileApp'])->name('mobile-app');

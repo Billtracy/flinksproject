@@ -36,7 +36,7 @@ Route::group(['middleware' => ['demo','XSS']], function () {
         Route::get('/download-file/{file}', [HomeController::class, 'downloadListingFile'])->name('download-file');
 
         Route::get('/', [HomeController::class, 'index'])->name('home');
-        Route::get('/join-as-a-provider', [HomeController::class, 'join_as_a_provider'])->name('join-as-a-provider');
+        Route::get('/become-a-handyman', [HomeController::class, 'join_as_a_provider'])->name('become-a-handyman');
 
         Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
         Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');

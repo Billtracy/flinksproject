@@ -131,8 +131,8 @@
                                 <div
                                     class="single_service_footer d-flex flex-wrap justify-content-between align-items-center">
                                     <div class="img_area">
-                                        <img src="{{ $featured_service->provider ? asset($featured_service->provider->image) : '' }}" alt="user" class="img-fluid">
-                                        <span>{{ $featured_service->provider->name }}</span>
+                                        {{-- <img src="{{ $featured_service->provider ? asset($featured_service->provider->image) : '' }}" alt="user" class="img-fluid">
+                                        <span>{{ $featured_service->provider->name }}</span> --}}
                                     </div>
 
                                     @php
@@ -253,8 +253,8 @@
                                 <div
                                     class="single_service_footer d-flex flex-wrap justify-content-between align-items-center">
                                     <div class="img_area">
-                                        <img src="{{ $popular_service->provider ? asset($popular_service->provider->image) : '' }}" alt="user" class="img-fluid">
-                                        <span>{{ $popular_service->provider->name }}</span>
+                                        {{-- <img src="{{ $popular_service->provider ? asset($popular_service->provider->image) : '' }}" alt="user" class="img-fluid">
+                                        <span>{{ $popular_service->provider->name }}</span> --}}
                                     </div>
 
                                     @php

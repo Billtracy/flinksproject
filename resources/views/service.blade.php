@@ -202,8 +202,8 @@
                                         <div
                                             class="single_service_footer d-flex flex-wrap justify-content-between align-items-center">
                                             <div class="img_area">
-                                                <img src="{{ $service->provider ? asset($service->provider->image) : '' }}" alt="user" class="img-fluid">
-                                                <span>{{ $service->provider->name }}</span>
+                                                {{-- <img src="{{ $service->provider ? asset($service->provider->image) : '' }}" alt="user" class="img-fluid">
+                                                <span>{{ $service->provider->name }}</span> --}}
                                             </div>
 
                                             @php
