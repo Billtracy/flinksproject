@@ -34,7 +34,7 @@
                                     <tr>
                                         <td>{{ ++$index }}</td>
                                         <td><a href="{{ route('admin.customer-show', $review->user_id) }}">{{ $review->user ? $review->user->name : '' }}</a></td>
-                                        <td><a href="{{ route('admin.service.edit', $review->service_id) }}">{{ $review->service->name }}</a></td>
+                                        <td><a href="{{ route('admin.service.edit', $review->service_id) }}">{{ $review->service->name ?? "" }}</a></td>
 
                                         <td>{{ $review->rating }}</td>
                                         <td>

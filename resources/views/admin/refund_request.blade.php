@@ -36,10 +36,10 @@
                                     <tr>
                                         <td>{{ ++$index }}</td>
                                         <td>
-                                            <a href="{{ route('admin.customer-show', $refundRequest->client_id) }}">{{ $refundRequest->client->name }}</a>
+                                            <a href="{{ route('admin.customer-show', $refundRequest->client_id) }}">{{ $refundRequest->client->name ?? "" }}</a>
                                         </td>
-                                        <td>{{ $currency_icon->icon }}{{ $refundRequest->order->total_amount }}</td>
-                                        <td>{{ $refundRequest->order->order_id }}</td>
+                                        <td>{{ $currency_icon->icon }}{{ $refundRequest->order->total_amount ?? "" }}</td>
+                                        <td>{{ $refundRequest->order->order_id ?? "" }}</td>
 
                                         <td>
                                             @if ($refundRequest->status == 'awaiting_for_admin_approval')
@@ -52,7 +52,7 @@
                                         </td>
                                         <td>
 
-                                        <a href="{{ route('admin.booking-show',$refundRequest->order->order_id) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a href="{{ route('admin.booking-show',$refundRequest->order->order_id ?? "") }}" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
                                     </tr>
                                   @endforeach
                             </tbody>

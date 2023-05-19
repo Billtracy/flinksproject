@@ -26,6 +26,7 @@ use App\Models\Review;
 use App\Models\RefundRequest;
 use App\Models\AdditionalService;
 use App\Models\AppointmentSchedule;
+use Illuminate\Support\Facades\File;
 
 class ProviderController extends Controller
 {

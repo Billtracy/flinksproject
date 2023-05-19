@@ -41,7 +41,7 @@ class DashboardController extends Controller
         $refundRequests = RefundRequest::with('order')->whereDay('created_at', now()->day)->get();
         $today_total_refund = 0;
         foreach($refundRequests as $refundRequest){
-            $today_total_refund += $refundRequest->order->total_amount;
+            $today_total_refund += $refundRequest->order->total_amount ?? 0;
         }
 
         $today_users = User::whereDay('created_at', now()->day)->count();
@@ -67,7 +67,7 @@ class DashboardController extends Controller
 
         $monthly_total_refund = 0;
         foreach($refundRequests as $refundRequest){
-            $monthly_total_refund += $refundRequest->order->total_amount;
+            $monthly_total_refund += $refundRequest->order->total_amount ?? 0;
         }
 
         $monthly_users = User::whereMonth('created_at', now()->month)->count();
@@ -93,7 +93,7 @@ class DashboardController extends Controller
 
         $yearly_total_refund = 0;
         foreach($refundRequests as $refundRequest){
-            $yearly_total_refund += $refundRequest->order->total_amount;
+            $yearly_total_refund += $refundRequest->order->total_amount ?? 0;
         }
 
         $yearly_users = User::whereYear('created_at', now()->year)->count();
@@ -118,7 +118,7 @@ class DashboardController extends Controller
 
         $total_total_refund = 0;
         foreach($refundRequests as $refundRequest){
-            $total_total_refund += $refundRequest->order->total_amount;
+            $total_total_refund += $refundRequest->order->total_amount ?? 0;
         }
 
         $total_users = User::count();
