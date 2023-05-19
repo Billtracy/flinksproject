@@ -304,7 +304,7 @@
                             <li><a href="{{ route('about-us') }}">{{__('user.Why Choose Us')}}</a></li>
                             <li><a href="{{ route('dashboard') }}">{{__('user.My Profile')}}</a></li>
                             <li><a href="{{ route('about-us') }}">{{__('user.About Us')}}</a></li>
-                            <li><a href="{{ route('join-as-a-provider') }}">{{__('user.Join as a Provider')}}</a></li>
+                            <li><a href="{{ route('become-a-handyman') }}">{{__('user.Join as a Provider')}}</a></li>
                         </ul>
                     </div>
                 </div>

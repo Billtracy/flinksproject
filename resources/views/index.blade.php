@@ -328,7 +328,7 @@
                 <div class="col-lg-8 m-auto">
                     <div class="wsus__seller_join_text text-center">
                         <h3>{{ $join_as_a_provider->title }}</h3>
-                        <a href="{{ route('join-as-a-provider') }}">{{ $join_as_a_provider->button_text }}</a>
+                        <a href="{{ route('become-a-handyman') }}">{{ $join_as_a_provider->button_text }}</a>
                     </div>
                 </div>
             </div>

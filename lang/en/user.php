@@ -303,7 +303,7 @@
   'Location' => 'Location',
   'Send Message' => 'Send Message',
   'Popular Searches' => 'Popular Searches',
-  'Join as provider' => 'Become an Handyman',
+  'Join as provider' => 'Become a Handyman',
   'Upload Your Image' => 'Upload Your Image',
   'Choose a image PNG, JPEG, JPG' => 'Choose a image PNG, JPEG, JPG',
   'Note' => 'Note',
