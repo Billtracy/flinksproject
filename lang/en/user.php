@@ -393,7 +393,7 @@
   'Quick Link' => 'Quick Link',
   'Our Services' => 'Our Services',
   'Why Choose Us' => 'Why Choose Us',
-  'Join as a Provider' => 'Join as a Provider',
+  'Join as a Provider' => 'Become a Handyman',
   'Welcome back! Login with your data you entered during registration.' => 'Welcome back! Login with your data you entered during registration.',
   'Welcome back! Register with your valid data for successfully registration.' => 'Welcome back! Register with your valid data for successfully registration.',
   'Did you forget your password ? Do not worry. Please submit below form using your email, and get a reset password link.' => 'Did you forget your password ? Don\'t worry. Please submit below form using your email, and get a reset password link.',

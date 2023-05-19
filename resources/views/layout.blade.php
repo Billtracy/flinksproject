@@ -293,7 +293,6 @@
                         <ul class="footer_link">
                             <li><a href="{{ route('contact-us') }}">{{__('user.Contact Us')}}</a></li>
                             <li><a href="{{ route('blogs') }}">{{__('user.Our Blog')}}</a></li>
-                            <li><a href="{{ route('faq') }}">{{__('user.FAQ')}}</a></li>
                             <li><a href="{{ route('terms-and-conditions') }}">{{__('user.Terms And Conditions')}}</a></li>
                             <li><a href="{{ route('privacy-policy') }}">{{__('user.Privacy Policy')}}</a></li>
                         </ul>

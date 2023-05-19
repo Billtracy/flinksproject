@@ -117,7 +117,7 @@
             </ul>
           </li>
 
-          <li class="nav-item dropdown {{ Route::is('admin.mobile-slider.*') || Route::is('admin.slider.*') || Route::is('admin.counter.*') || Route::is('admin.testimonial.*') || Route::is('admin.join-as-a-provider') || Route::is('admin.mobile-app') || Route::is('admin.subscriber-section') || Route::is('admin.partner.*') || Route::is('admin.home2-contact') || Route::is('admin.how-it-work') || Route::is('admin.section-content') || Route::is('admin.section-control') ? 'active' : '' }}">
+          <li class="nav-item dropdown {{ Route::is('admin.mobile-slider.*') || Route::is('admin.slider.*') || Route::is('admin.counter.*') || Route::is('admin.testimonial.*') || Route::is('admin.become-a-handyman') || Route::is('admin.mobile-app') || Route::is('admin.subscriber-section') || Route::is('admin.partner.*') || Route::is('admin.home2-contact') || Route::is('admin.how-it-work') || Route::is('admin.section-content') || Route::is('admin.section-control') ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i><span>{{__('admin.All Section')}}</span></a>
             <ul class="dropdown-menu">
                 <li class="{{ Route::is('admin.section-content') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.section-content') }}">{{__('admin.Section Content')}}</a></li>
@@ -132,7 +132,7 @@
 
                 <li class="{{ Route::is('admin.testimonial.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.testimonial.index') }}">{{__('admin.Testimonial')}}</a></li>
 
-                <li class="{{ Route::is('admin.join-as-a-provider') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.join-as-a-provider') }}">{{__('admin.Join as a Provider')}}</a></li>
+                <li class="{{ Route::is('admin.become-a-handyman') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.become-a-handyman') }}">{{__('admin.Join as a Provider')}}</a></li>
 
                 <li class="{{ Route::is('admin.mobile-app') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.mobile-app') }}">{{__('admin.Mobile App')}}</a></li>
 
