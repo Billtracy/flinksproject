@@ -79,7 +79,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="col-xl-3 col-sm-6 col-lg-3">
+                    {{-- <div class="col-xl-3 col-sm-6 col-lg-3">
                         <div class="wsus__service_search">
                             <label>{{__('user.Price Range')}}</label>
                             <select name="price_range" class="select_2 search_service_item">
@@ -111,7 +111,7 @@
                                 @endif
                             </select>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </form>
             <div class="row">
