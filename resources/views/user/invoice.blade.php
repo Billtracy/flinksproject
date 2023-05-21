@@ -61,7 +61,6 @@
                 <p> <span>{{__('user.Booking Created')}}: </span> {{ $order->created_at->format('d-m-Y') }}</p>
                 <p> <span>{{__('user.Booking Created Time')}}: </span> {{ $order->created_at->format('h:i A') }}</p>
                 <p> <span>{{__('user.Booking Note')}}: </span> {{ html_decode($order->order_note) }}</p>
-                <p> <span>{{__('user.Provider')}} :</span> <a href="{{ route('providers', $provider->user_name) }}">{{ $provider->name }}</a></p>
                 <p> <span>{{__('user.Service')}} :</span> <a href="{{ route('service', $order->service->slug) }}">{{ $order->service->name }}</a></p>
             </div>
 

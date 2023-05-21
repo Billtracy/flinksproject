@@ -38,17 +38,6 @@
                         </div>
 
                         <div class="form-group col-12">
-                            <label>{{__('admin.Provider')}} <span class="text-danger">*</span></label>
-                            <select name="provider_id" id="" class="form-control select2">
-                                <option value="">{{__('admin.Select Provider')}}</option>
-                                @foreach ($providers as $provider)
-                                <option  {{ $provider->id == $service->provider_id ? 'selected' : '' }} value="{{ $provider->id }}">{{ $provider->email }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-
-
-                        <div class="form-group col-12">
                             <label>{{__('admin.Service Name')}} <span class="text-danger">*</span></label>
                             <input id="name" type="text" class="form-control" name="name" value="{{ $service->name }}">
                         </div>

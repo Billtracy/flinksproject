@@ -1191,12 +1191,12 @@ class HomeController extends Controller
         $schedule_list = array();
 
         foreach($days as $day_item){
-            $schedule_item = AppointmentSchedule::where('user_id', $service->provider_id)->where('day', $day_item)->orderBy('start_time','asc')->first();
+            $schedule_item = AppointmentSchedule::where('day', $day_item)->orderBy('start_time','asc')->first();
 
             if($schedule_item){
                 $start_time = strtoupper(date('h:i A', strtotime($schedule_item->start_time)));
 
-                $schedule_item = AppointmentSchedule::where('user_id', $service->provider_id)->where('day', $day_item)->orderBy('end_time','desc')->first();
+                $schedule_item = AppointmentSchedule::where('day', $day_item)->orderBy('end_time','desc')->first();
                 $end_time = strtoupper(date('h:i A', strtotime($schedule_item->end_time)));
 
                 $schedule = array(
@@ -1227,7 +1227,7 @@ class HomeController extends Controller
 
         $review_pagiante_qty = CustomPagination::whereId('5')->first()->qty;
 
-        $reviews = Review::with('user')->where(['provider_id' =>  $service->provider_id, 'status' => 1,'service_id' => $service->id])->paginate($review_pagiante_qty);
+        $reviews = Review::with('user')->where(['status' => 1,'service_id' => $service->id])->paginate($review_pagiante_qty);
 
         $setting = Setting::first();
         $default_avatar = (object) array('image' => $setting->default_avatar);
@@ -1242,12 +1242,10 @@ class HomeController extends Controller
             }
         }
 
-        $provider = $service->provider;
+        $complete_order = Order::where('order_status','complete')->count();
 
-        $complete_order = Order::where('order_status','complete')->where('provider_id', $provider->id)->count();
-
-        $total_review = Review::where(['provider_id' =>  $service->provider_id, 'status' => 1])->count();
-        $average_rating = Review::where(['provider_id' =>  $service->provider_id, 'status' => 1])->avg('rating');
+        $total_review = Review::where(['status' => 1])->count();
+        $average_rating = Review::where(['status' => 1])->avg('rating');
 
         $reviewQty = $total_review;
         $reviewPoint = 0;
@@ -1277,7 +1275,7 @@ class HomeController extends Controller
             $active_theme = 'layout';
         }
 
-        $related_services = Service::with('category','provider')->where(['approve_by_admin' => 1, 'status' => 1, 'is_banned' => 0])->select('id','name','slug','image','price','category_id','provider_id','is_banned','status','approve_by_admin')->where('category_id', $service->category_id)->where('id','!=', $service->id)->get();
+        $related_services = Service::with('category')->where(['approve_by_admin' => 1, 'status' => 1, 'is_banned' => 0])->select('id','name','slug','image','price','category_id','provider_id','is_banned','status','approve_by_admin')->where('category_id', $service->category_id)->where('id','!=', $service->id)->get();
 
         return view('show_service')->with([
            'active_theme' => $active_theme,
@@ -1290,7 +1288,6 @@ class HomeController extends Controller
            'default_avatar' => $default_avatar,
            'currency_icon' => $currency_icon,
            'package_features' => $package_features,
-           'provider' => $provider,
            'complete_order' => $complete_order,
            'average_rating' => $average_rating,
            'half_rating' => $half_rating,

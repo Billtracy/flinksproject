@@ -1334,12 +1334,12 @@ class HomeController extends Controller
         $schedule_list = array();
 
         foreach($days as $day_item){
-            $schedule_item = AppointmentSchedule::where('user_id', $service->provider_id)->where('day', $day_item)->orderBy('start_time','asc')->first();
+            $schedule_item = AppointmentSchedule::where('day', $day_item)->orderBy('start_time','asc')->first();
 
             if($schedule_item){
                 $start_time = strtoupper(date('h:i A', strtotime($schedule_item->start_time)));
 
-                $schedule_item = AppointmentSchedule::where('user_id', $service->provider_id)->where('day', $day_item)->orderBy('end_time','desc')->first();
+                $schedule_item = AppointmentSchedule::where('day', $day_item)->orderBy('end_time','desc')->first();
                 $end_time = strtoupper(date('h:i A', strtotime($schedule_item->end_time)));
 
                 $schedule = array(

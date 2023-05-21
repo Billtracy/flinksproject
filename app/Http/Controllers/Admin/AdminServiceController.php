@@ -109,7 +109,6 @@ class AdminServiceController extends Controller
             'category_id'=>'required',
             'details'=>'required',
             'image'=>'required',
-            'provider_id'=>'required',
         ];
         $customMessages = [
             'name.required' => trans('admin_validation.Name is required'),
@@ -165,7 +164,6 @@ class AdminServiceController extends Controller
         }
         $benifits = json_encode($benifits);
 
-        $service->provider_id = $request->provider_id;
         $service->category_id = $request->category_id;
         $service->name = $request->name;
         $service->slug = $request->slug;
@@ -252,7 +250,6 @@ class AdminServiceController extends Controller
             'price'=>'required',
             'category_id'=>'required',
             'details'=>'required',
-            'provider_id'=>'required',
         ];
         $customMessages = [
             'name.required' => trans('admin_validation.Name is required'),
@@ -310,7 +307,6 @@ class AdminServiceController extends Controller
         }
         $benifits = json_encode($benifits);
 
-        $service->provider_id = $request->provider_id;
         $service->category_id = $request->category_id;
         $service->name = $request->name;
         $service->slug = $request->slug;

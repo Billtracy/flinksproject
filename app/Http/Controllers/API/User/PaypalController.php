@@ -364,18 +364,18 @@ class PaypalController extends Controller
     }
 
     public function sendMailToProvider($provider, $order){
-        MailHelper::setMailConfig();
+        // MailHelper::setMailConfig();
 
-        $setting = Setting::first();
+        // $setting = Setting::first();
 
-        $template=EmailTemplate::where('id',9)->first();
-        $subject=$template->subject;
-        $message=$template->description;
-        $message = str_replace('{{name}}',$provider->name,$message);
-        $message = str_replace('{{amount}}',$setting->currency_icon.$order->total_amount,$message);
-        $message = str_replace('{{schedule_date}}',$order->booking_date,$message);
-        $message = str_replace('{{order_id}}',$order->order_id,$message);
-        Mail::to($provider->email)->send(new OrderSuccessfully($message,$subject));
+        // $template=EmailTemplate::where('id',9)->first();
+        // $subject=$template->subject;
+        // $message=$template->description;
+        // $message = str_replace('{{name}}',$provider->name,$message);
+        // $message = str_replace('{{amount}}',$setting->currency_icon.$order->total_amount,$message);
+        // $message = str_replace('{{schedule_date}}',$order->booking_date,$message);
+        // $message = str_replace('{{order_id}}',$order->order_id,$message);
+        // Mail::to($provider->email)->send(new OrderSuccessfully($message,$subject));
     }
 
 

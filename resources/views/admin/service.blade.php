@@ -88,7 +88,6 @@
 
                                     </p>
 
-                                    <p>{{__('admin.Provider')}}: <a href="{{ route('admin.provider-show', $service->provider_id) }}">{{ $service->provider->name }}</a></p>
                                     <a href="{{ route('admin.service.edit', $service->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i> {{__('admin.Edit')}}</a>
 
                                     @if ($service->totalOrder == 0)

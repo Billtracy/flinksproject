@@ -126,9 +126,7 @@
                                         <a class="category" href="{{ route('services',['category'=> $service->category->slug]) }}">{{ $service->category->name }}</a>
                                     </div>
                                     <div class="wsus__services_text2">
-                                        <img src="{{ $service->provider ? asset($service->provider->image) : '' }}" alt="user" class="img-fluid">
                                         <ul class="d-flex justify-content-between">
-                                            <li>{{ $service->provider->name }}</li>
 
                                             @php
                                                 $reviewQty = $service->totalReview;
@@ -202,8 +200,7 @@
                                         <div
                                             class="single_service_footer d-flex flex-wrap justify-content-between align-items-center">
                                             <div class="img_area">
-                                                {{-- <img src="{{ $service->provider ? asset($service->provider->image) : '' }}" alt="user" class="img-fluid">
-                                                <span>{{ $service->provider->name }}</span> --}}
+
                                             </div>
 
                                             @php

@@ -139,13 +139,6 @@
                             <div id="service_available_dates"></div>
                         </div>
 
-                        <div class="wsus__booking_pic_up mt_25">
-                            <h3>{{__('user.Select Schedule')}}</h3>
-                            <select id="schedule_box">
-                                <option value="">{{__('user.Select')}}</option>
-                            </select>
-                        </div>
-
                         <div class="wsus__booking_summery">
                             <h3>{{__('user.Booking Summery')}}</h3>
                             <ul>
@@ -200,10 +193,10 @@
                     return;
                 }
 
-                if(!$("#schedule_time_slot").val()){
-                    toastr.error("{{__('user.Please select a schedule')}}")
-                    return;
-                }
+                // if(!$("#schedule_time_slot").val()){
+                //     toastr.error("{{__('user.Please select a schedule')}}")
+                //     return;
+                // }
 
                 $("#submitReadyToBooking").submit();
             })
@@ -219,36 +212,36 @@
 
             $("#service_available_dates").on("change", function(){
                 let date_string = $(this).val();
-                $("#input_date").val(date_string)
-                let provider_id = "{{ $service->provider_id }}";
-                $.ajax({
-                    type: 'get',
-                    data: {date : date_string, provider_id : provider_id},
-                    url: "{{ route('get-available-schedule') }}",
-                    success: function (response) {
-                        if(response.is_available){
-                            $("#schedule_box").html(response.available_schedules);
-                        }else{
-                            let html = `<option value="">{{__('user.Select')}}</option>`;
-                            $("#schedule_box").html(html);
-                            $("#schedule_time_slot").val('');
+                $("#input_date").val(date_string);
+                // let provider_id = "{{ $service->provider_id }}";
+                // $.ajax({
+                //     type: 'get',
+                //     data: {date : date_string, provider_id : provider_id},
+                //     url: "{{ route('get-available-schedule') }}",
+                //     success: function (response) {
+                //         if(response.is_available){
+                //             $("#schedule_box").html(response.available_schedules);
+                //         }else{
+                //             let html = `<option value="">{{__('user.Select')}}</option>`;
+                //             $("#schedule_box").html(html);
+                //             $("#schedule_time_slot").val('');
 
-                            toastr.error("{{__('user.Schedule Not Found')}}")
-                        }
-                    },
-                    error: function(response) {
-                        let html = `<option value="">{{__('user.Select')}}</option>`;
-                        $("#schedule_box").html(html);
-                        $("#schedule_time_slot").val('');
+                //             toastr.error("{{__('user.Schedule Not Found')}}")
+                //         }
+                //     },
+                //     error: function(response) {
+                //         let html = `<option value="">{{__('user.Select')}}</option>`;
+                //         $("#schedule_box").html(html);
+                //         $("#schedule_time_slot").val('');
 
-                        toastr.error("{{__('user.Something went wrong')}}")
-                    }
-                });
+                //         toastr.error("{{__('user.Something went wrong')}}")
+                //     }
+                // });
             })
 
-            $("#schedule_box").on("change", function(){
-                $("#schedule_time_slot").val($(this).val());
-            })
+            // $("#schedule_box").on("change", function(){
+            //     $("#schedule_time_slot").val($(this).val());
+            // })
 
         });
     })(jQuery);

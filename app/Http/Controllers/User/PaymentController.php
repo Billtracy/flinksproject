@@ -121,7 +121,6 @@ class PaymentController extends Controller
         }
 
         $available_schedules = AppointmentSchedule::whereIn('id', $available_schedule_arr)->orderBy('start_time','asc')->get();
-
         $is_available = $available_schedules->count() > 0 ? true : false;
         $html = "<option value=''>".trans('user_validation.Select')."</option>";
         foreach($available_schedules as $index=> $schedule){
@@ -141,7 +140,6 @@ class PaymentController extends Controller
             'sub_total' => $request->sub_total,
             'total' => $request->total,
             'date' => $request->date,
-            'schedule_time_slot' => $request->schedule_time_slot,
         );
 
         $breadcrumb = BreadcrumbImage::where(['id' => 8])->first();
@@ -278,7 +276,6 @@ class PaymentController extends Controller
                 'total_price' => $total_price,
                 'package_price' => $service->price,
                 'date' => $extra_services->date,
-                'schedule_time_slot' => $extra_services->schedule_time_slot,
             );
 
             $user = Auth::guard('web')->user();
@@ -406,7 +403,6 @@ class PaymentController extends Controller
                 'total_price' => $total_price,
                 'package_price' => $service->price,
                 'date' => $extra_services->date,
-                'schedule_time_slot' => $extra_services->schedule_time_slot,
             );
 
 
@@ -463,7 +459,7 @@ class PaymentController extends Controller
         $service = Service::where(['slug' => $slug, 'approve_by_admin' => 1, 'status' => 1, 'is_banned' => 0])->first();
         $order_info = Session::get('order_info');
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
         if($exist > 0){
             $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -473,9 +469,10 @@ class PaymentController extends Controller
         }
 
     }
-    public function checkAvaibalityBeforPayment($service, $date, $schedule_id){
-        $exist = Order::where(['provider_id' => $service->provider_id, 'appointment_schedule_id' => $schedule_id, 'booking_date' => $date])->count();
-        return $exist;
+    public function checkAvaibalityBeforPayment($service, $date){
+        // $exist = Order::where(['provider_id' => $service->provider_id, 'appointment_schedule_id' => $schedule_id, 'booking_date' => $date])->count();
+        // return $exist;
+        return false;
     }
 
 
@@ -504,7 +501,7 @@ class PaymentController extends Controller
         $provider_id = $service->provider_id;
         $client_id = $user->id;
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
         if($exist > 0){
             $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -539,7 +536,7 @@ class PaymentController extends Controller
         $provider_id = $service->provider_id;
         $client_id = $user->id;
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
         if($exist > 0){
             $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -553,12 +550,16 @@ class PaymentController extends Controller
         $payableAmount = round($total_price * $stripe->currency_rate,2);
         Stripe\Stripe::setApiKey($stripe->stripe_secret);
 
-        $result = Stripe\Charge::create ([
+        try {
+            $result = Stripe\Charge::create ([
                 "amount" => $payableAmount * 100,
                 "currency" => $stripe->currency_code,
                 "source" => $request->stripeToken,
                 "description" => env('APP_NAME')
             ]);
+        } catch (\Throwable $th) {
+           return back()->with("error","Something Went Wrong");
+        }
 
         $order = $this->createOrder($user, $service, $order_info, $provider_id, $client_id, 'Stripe', 'success', $result->balance_transaction);
 
@@ -596,7 +597,7 @@ class PaymentController extends Controller
                 $provider_id = $service->provider_id;
                 $client_id = $user->id;
 
-                $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+                $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
                 if($exist > 0){
                     $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -696,7 +697,7 @@ class PaymentController extends Controller
         $order_info = Session::get('order_info');
         $total_price = $service->price + $order_info->extra_price;
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
         if($exist > 0){
             $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -734,7 +735,7 @@ class PaymentController extends Controller
         Session::put('return_from_mollie','payment_faild');
         $order_info = Session::get('order_info');
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
         if($exist > 0){
             $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -844,7 +845,7 @@ class PaymentController extends Controller
         $provider_id = $service->provider_id;
         $client_id = $user->id;
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
         if($exist > 0){
             $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -906,7 +907,7 @@ class PaymentController extends Controller
 
         $order_info = Session::get('order_info');
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
         if($exist > 0){
             $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -1000,18 +1001,12 @@ class PaymentController extends Controller
         $order_note = $order_info->customer->order_note;
         $client_address = $order_info->customer;
 
-        $find_schedule = AppointmentSchedule::find($order_info->schedule_time_slot);
-        $time_slot = '';
-        if($find_schedule){
-            $time_slot = strtoupper(date('h:i A', strtotime($find_schedule->start_time))).' - '.strtoupper(date('h:i A', strtotime($find_schedule->end_time)));
-        }
-
 
         $order = new Order();
         $order->order_id = substr(rand(0,time()),0,10);
         $order->booking_date = $order_info->date;
-        $order->appointment_schedule_id = $order_info->schedule_time_slot;
-        $order->schedule_time_slot = $time_slot;
+        $order->appointment_schedule_id = $order_info->schedule_time_slot ?? 0;
+        $order->schedule_time_slot = 0;
         $order->client_id = $client_id;
         $order->provider_id = $provider_id;
         $order->service_id = $service->id;
@@ -1048,18 +1043,18 @@ class PaymentController extends Controller
     }
 
     public function sendMailToProvider($provider, $order){
-        MailHelper::setMailConfig();
+        // MailHelper::setMailConfig();
 
-        $setting = Setting::first();
+        // $setting = Setting::first();
 
-        $template=EmailTemplate::where('id',9)->first();
-        $subject=$template->subject;
-        $message=$template->description;
-        $message = str_replace('{{name}}',$provider->name,$message);
-        $message = str_replace('{{amount}}',$setting->currency_icon.$order->total_amount,$message);
-        $message = str_replace('{{schedule_date}}',$order->booking_date,$message);
-        $message = str_replace('{{order_id}}',$order->order_id,$message);
-        Mail::to($provider->email)->send(new OrderSuccessfully($message,$subject));
+        // $template=EmailTemplate::where('id',9)->first();
+        // $subject=$template->subject;
+        // $message=$template->description;
+        // $message = str_replace('{{name}}',$provider->name,$message);
+        // $message = str_replace('{{amount}}',$setting->currency_icon.$order->total_amount,$message);
+        // $message = str_replace('{{schedule_date}}',$order->booking_date,$message);
+        // $message = str_replace('{{order_id}}',$order->order_id,$message);
+        // Mail::to($provider->email)->send(new OrderSuccessfully($message,$subject));
     }
 
     public function payWithPaymongo(Request $request){

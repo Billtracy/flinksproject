@@ -202,7 +202,7 @@
                                 </div>
                             </div>
                             <div class="col-12 col-md-6 col-lg-12">
-                                <div class="wsus__service_provider mt_25">
+                                {{-- <div class="wsus__service_provider mt_25">
                                     <img src="{{ $provider->image ? asset($provider->image) : asset($default_avatar->image) }}" alt="service provider"
                                         class="img-fluid w-100">
                                     <h3><a href="{{ route('providers', $provider->user_name) }}">{{ $provider->name }}</a></h3>
@@ -249,7 +249,7 @@
                                         @endif
 
                                     </div>
-                                </div>
+                                </div> --}}
                             </div>
                         </div>
                     </div>

@@ -412,7 +412,7 @@ class PaymentController extends Controller
         $service = Service::where(['slug' => $slug, 'approve_by_admin' => 1, 'status' => 1, 'is_banned' => 0])->first();
         $order_info = Session::get('order_info');
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
         if($exist > 0){
             $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -422,9 +422,10 @@ class PaymentController extends Controller
         }
 
     }
-    public function checkAvaibalityBeforPayment($service, $date, $schedule_id){
-        $exist = Order::where(['provider_id' => $service->provider_id, 'appointment_schedule_id' => $schedule_id, 'booking_date' => $date])->count();
-        return $exist;
+    public function checkAvaibalityBeforPayment($service, $date){
+        // $exist = Order::where(['provider_id' => $service->provider_id, 'appointment_schedule_id' => $schedule_id, 'booking_date' => $date])->count();
+        // return $exist;
+        return false;
     }
 
 
@@ -526,7 +527,7 @@ class PaymentController extends Controller
         $provider_id = $service->provider_id;
         $client_id = $user->id;
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
         if($exist > 0){
             $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -650,7 +651,7 @@ class PaymentController extends Controller
         $provider_id = $service->provider_id;
         $client_id = $user->id;
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date, $order_info->schedule_time_slot);
+        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
         if($exist > 0){
             $notification = trans('user_validation.This schedule already booked. please choose another schedule');
@@ -901,18 +902,18 @@ class PaymentController extends Controller
     }
 
     public function sendMailToProvider($provider, $order){
-        MailHelper::setMailConfig();
+        // MailHelper::setMailConfig();
 
-        $setting = Setting::first();
+        // $setting = Setting::first();
 
-        $template=EmailTemplate::where('id',9)->first();
-        $subject=$template->subject;
-        $message=$template->description;
-        $message = str_replace('{{name}}',$provider->name,$message);
-        $message = str_replace('{{amount}}',$setting->currency_icon.$order->total_amount,$message);
-        $message = str_replace('{{schedule_date}}',$order->booking_date,$message);
-        $message = str_replace('{{order_id}}',$order->order_id,$message);
-        Mail::to($provider->email)->send(new OrderSuccessfully($message,$subject));
+        // $template=EmailTemplate::where('id',9)->first();
+        // $subject=$template->subject;
+        // $message=$template->description;
+        // $message = str_replace('{{name}}',$provider->name,$message);
+        // $message = str_replace('{{amount}}',$setting->currency_icon.$order->total_amount,$message);
+        // $message = str_replace('{{schedule_date}}',$order->booking_date,$message);
+        // $message = str_replace('{{order_id}}',$order->order_id,$message);
+        // Mail::to($provider->email)->send(new OrderSuccessfully($message,$subject));
     }
 
 
