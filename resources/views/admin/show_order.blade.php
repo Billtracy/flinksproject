@@ -43,13 +43,13 @@
                                 <p>{{__('admin.Phone')}} : {{ $client->Phone }}</p>
                                 <p>{{__('admin.Email')}} : {{ $client->email }}</p>
                                 <p>{{__('admin.Address')}} : {{ $client->address }}</p>
-
+{{--
                                 <h6 class="mt-4">{{__('admin.Provider Details')}}</h6>
                                 <hr>
                                 <p>{{__('admin.Name')}} : <a href="{{ route('admin.provider-show', $provider->id) }}">{{ $provider->name }}</a></p>
                                 <p>{{__('admin.Phone')}} : {{ $provider->Phone }}</p>
                                 <p>{{__('admin.Email')}} : {{ $provider->email }}</p>
-                                <p>{{__('admin.Address')}} : {{ $provider->address }}</p>
+                                <p>{{__('admin.Address')}} : {{ $provider->address }}</p> --}}
 
 
 
