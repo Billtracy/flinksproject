@@ -1073,7 +1073,7 @@ class HomeController extends Controller
         $categories = Category::orderBy('name','asc')->select('id','name','slug','icon')->where('status',1)->get();
 
         $service_pagiante_qty = CustomPagination::whereId('2')->first()->qty;
-        $services = Service::with('category','provider')->where(['approve_by_admin' => 1, 'status' => 1, 'is_banned' => 0])->select('id','name','slug','image','price','category_id','provider_id','is_banned','status','approve_by_admin');
+        $services = Service::with('category')->where(['approve_by_admin' => 1, 'status' => 1, 'is_banned' => 0])->select('id','name','slug','image','price','category_id','provider_id','is_banned','status','approve_by_admin');
 
         if($request->category){
             $category = Category::where('slug', $request->category)->first();
@@ -1082,24 +1082,6 @@ class HomeController extends Controller
             }
         }
 
-        if($request->service_area){
-            $services = $services->whereHas('provider', function($query) use ($request){
-                $service_area = City::where('slug', $request->service_area)->first();
-                if($service_area){
-                    $query->where('city_id', $service_area->id);
-                }
-            });
-        }
-
-        if($request->price_range){
-            if($request->price_range == 'low_price'){
-                $services = $services->orderBy('price','asc');
-            }elseif($request->price_range == 'high_price'){
-                $services = $services->orderBy('price','desc');
-            }else{
-                $services = $services->orderBy('id','desc');
-            }
-        }
 
         if($request->rating){
             $services->when($request->rating, function ($query) use ($request) {

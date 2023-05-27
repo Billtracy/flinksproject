@@ -183,7 +183,7 @@
                                                             <th>{{__('user.Order')}}</th>
                                                             <th>{{__('user.Date')}}</th>
                                                             <th>{{__('user.Status')}}</th>
-                                                            <th>{{__('user.Amount')}}</th>
+                                                            {{-- <th>{{__('user.Amount')}}</th> --}}
                                                             <th>{{__('user.Action') }}</th>
                                                         </tr>
                                                         @foreach ($orders as $index => $order)
@@ -209,9 +209,9 @@
                                                                         <span class="cancel">{{__('user.Pending')}}</span>
                                                                     @endif
                                                                 </td>
-                                                                <td>
+                                                                {{-- <td>
                                                                     <h5>{{ $currency_icon->icon }}{{ $order->total_amount }}</h5>
-                                                                </td>
+                                                                </td> --}}
                                                                 <td><a onclick="loadInvoice({{ $order->order_id }})" href="javascript:;" class="view_invoice">{{__('user.View Details')}}</a></td>
                                                             </tr>
                                                         @endforeach

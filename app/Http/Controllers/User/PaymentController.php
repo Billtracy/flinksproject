@@ -477,47 +477,26 @@ class PaymentController extends Controller
 
 
     public function bankPayment(Request $request, $slug){
-
-        if(env('APP_MODE') == 'DEMO'){
-            $notification = trans('user_validation.This Is Demo Version. You Can Not Change Anything');
-            $notification=array('messege'=>$notification,'alert-type'=>'error');
-            return redirect()->back()->with($notification);
-        }
-
-        $rules = [
-            'tnx_info'=>'required',
-        ];
-        $customMessages = [
-            'tnx_info.required' => trans('user_validation.Transaction is required'),
-        ];
-        $this->validate($request, $rules,$customMessages);
-
         $service = Service::where(['slug' => $slug, 'approve_by_admin' => 1, 'status' => 1, 'is_banned' => 0])->first();
-
-
-
         $user = Auth::guard('web')->user();
         $order_info = Session::get('order_info');
         $provider_id = $service->provider_id;
         $client_id = $user->id;
 
-        $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
+        // $exist = $this->checkAvaibalityBeforPayment($service, $order_info->date);
 
-        if($exist > 0){
-            $notification = trans('user_validation.This schedule already booked. please choose another schedule');
-            $notification = array('messege'=>$notification,'alert-type'=>'error');
-            return redirect()->route('ready-to-booking', $service->slug)->with($notification);
-        }
+        // if($exist > 0){
+        //     $notification = trans('user_validation.This schedule already booked. please choose another schedule');
+        //     $notification = array('messege'=>$notification,'alert-type'=>'error');
+        //     return redirect()->route('ready-to-booking', $service->slug)->with($notification);
+        // }
 
         $order = $this->createOrder($user, $service, $order_info, $provider_id, $client_id, 'Bank Payment', 'pending', $request->tnx_info);
 
-        $provider = $service->provider;
         $this->sendMailToClient($user, $order);
-        $this->sendMailToProvider($provider, $order);
-
         Session::forget('order_info');
 
-        $notification = trans('user_validation.Your order has been placed. please wait for admin payment approval');
+        $notification = trans('Your order has been placed. Please wait for approval');
         $notification = array('messege'=>$notification,'alert-type'=>'success');
         return redirect()->route('dashboard')->with($notification);
     }

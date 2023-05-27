@@ -192,7 +192,7 @@
                             <div class="col-12 col-md-6 col-lg-12">
                                 <div class="wsus__package">
                                     <p>{{__('user.My Package')}}</p>
-                                    <h2>{{ $currency_icon->icon }}{{ $service->price }}</h2>
+                                    {{-- <h2>{{ $currency_icon->icon }}{{ $service->price }}</h2> --}}
                                     <ul>
                                         @foreach ($package_features as $package_feature)
                                             <li>{{ $package_feature }}</li>
@@ -287,7 +287,7 @@
                         <div class="wsus__services_text">
                             <ul class="d-flex justify-content-between">
                                 <li><a href="{{ route('services',['category'=> $related_service->category->slug]) }}">{{ $related_service->category->name }}</a></li>
-                                <li>{{ $currency_icon->icon }}{{ $related_service->price }}</li>
+                                {{-- <li>{{ $currency_icon->icon }}{{ $related_service->price }}</li> --}}
                             </ul>
                             <a class="title" href="{{ route('service', $related_service->slug) }}">{{ $related_service->name }}</a>
                             <div

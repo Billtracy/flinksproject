@@ -125,7 +125,7 @@
                             <div class="wsus__services_text">
                                 <ul class="d-flex justify-content-between">
                                     <li><a href="{{ route('services',['category'=> $featured_service->category->slug]) }}">{{ $featured_service->category->name }}</a></li>
-                                    <li>{{ $currency_icon->icon }}{{ $featured_service->price }}</li>
+                                    {{-- <li>{{ $currency_icon->icon }}{{ $featured_service->price }}</li> --}}
                                 </ul>
                                 <a class="title" href="{{ route('service', $featured_service->slug) }}">{{ $featured_service->name }}</a>
                                 <div
@@ -247,7 +247,7 @@
                             <div class="wsus__services_text">
                                 <ul class="d-flex justify-content-between">
                                     <li><a href="{{ route('services',['category' => $popular_service->category->slug]) }}">{{ $popular_service->category->name }}</a></li>
-                                    <li>{{ $currency_icon->icon }}{{ $popular_service->price }}</li>
+                                    {{-- <li>{{ $currency_icon->icon }}{{ $popular_service->price }}</li> --}}
                                 </ul>
                                 <a class="title" href="{{ route('service', $popular_service->slug) }}">{{ $popular_service->name }}</a>
                                 <div

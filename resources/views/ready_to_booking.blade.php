@@ -138,8 +138,10 @@
                         <div class="wsus__booking_calendar">
                             <div id="service_available_dates"></div>
                         </div>
-
-                        <div class="wsus__booking_summery">
+                        @php
+                        $extra_service = 0.00;
+                        @endphp
+                        {{-- <div class="wsus__booking_summery">
                             <h3>{{__('user.Booking Summery')}}</h3>
                             <ul>
                                 @foreach ($package_features as $package_feature)
@@ -151,14 +153,12 @@
                                 <ul class="extra_service_area">
 
                                 </ul>
-                                @php
-                                    $extra_service = 0.00;
-                                @endphp
+
                                 <h4>{{__('user.Extra Service')}} <span>{{ $currency_icon->icon }}<span id="extra_service_price">{{ round($extra_service, 2) }}</span> </span></h4>
 
                                 <h5>{{__('user.Total')}} <span>{{ $currency_icon->icon }}<span id="total_price">{{ round($service->price + $extra_service, 2) }}</span></span></h5>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

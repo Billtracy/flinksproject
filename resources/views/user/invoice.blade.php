@@ -7,7 +7,7 @@
                     <th class="package">{{__('user.Include Services')}}</th>
                     <th class="price"></th>
                     <th class="qnty"></th>
-                    <th class="total"></th>
+                    {{-- <th class="total"></th> --}}
                 </tr>
                 <tr>
                     <td class="package">
@@ -17,13 +17,13 @@
                     </td>
                     <td class="price"></td>
                     <td class="qnty"></td>
-                    <td class="total"></td>
+                    {{-- <td class="total"></td> --}}
                 </tr>
                 @if (count($additional_services) > 0)
                 <tr class="border_none">
                     <th class="package">{{__('user.Additional Service')}}</th>
                     <th class="qnty">{{__('user.Quantity')}}</th>
-                    <th class="total">{{__('user.Total')}}</th>
+                    {{-- <th class="total">{{__('user.Total')}}</th> --}}
                 </tr>
                 @foreach ($additional_services as $additional_service)
                     <tr>
@@ -33,9 +33,9 @@
                         <td class="qnty">
                             <b>{{ $additional_service->qty }}</b>
                         </td>
-                        <td class="total">
+                        {{-- <td class="total">
                             <b>{{ $currency_icon->icon }}{{ $additional_service->price }}</b>
-                        </td>
+                        </td> --}}
                     </tr>
                 @endforeach
                 @endif
@@ -50,7 +50,7 @@
                 <h3>{{__('user.Booking Information')}}</h3>
                 <p> <span>{{__('user.Schedule date')}}: </span> {{ date('d-M-Y', strtotime($order->booking_date)) }}</p>
 
-                <p> <span>{{__('user.Schedule Time')}}: </span> {{ $order->schedule_time_slot }}</p>
+                {{-- <p> <span>{{__('user.Schedule Time')}}: </span> {{ $order->schedule_time_slot }}</p> --}}
 
                 <p> <span>{{__('user.Booking Id')}}: </span> {{ $order->order_id }}</p>
                 <p> <span>{{__('user.Name')}}: </span> {{ html_decode($booking_address->name) }}</p>
@@ -77,16 +77,16 @@
                         {{__('user.Success')}}
                     @endif
                 </p>
-                <p> <span>{{__('user.Payment Method')}}: </span> {{ $order->payment_method }}</p>
+                {{-- <p> <span>{{__('user.Payment Method')}}: </span> {{ $order->payment_method }}</p>
                 <p> <span>{{__('user.Transaction')}}: </span> {{ html_decode($order->transection_id) }}</p>
 
                 <p> <span>{{__('user.Sub Total')}} :</span> {{ $currency_icon->icon }}{{ $order->package_amount }}</p>
                 <p> <span>{{__('user.Additional')}} :</span> {{ $currency_icon->icon }}{{ $order->additional_amount }}</p>
-                <p> <span>{{__('user.Total Amount')}} :</span> {{ $currency_icon->icon }}{{ $order->total_amount }}</p>
+                <p> <span>{{__('user.Total Amount')}} :</span> {{ $currency_icon->icon }}{{ $order->total_amount }}</p> --}}
 
                 <p> <span>{{__('user.Order Status')}}</span> :
                     @if ($order->order_status == 'awaiting_for_provider_approval')
-                    {{__('user.awaiting for provider approval')}}
+                    Awaiting Approval
                     @elseif ($order->order_status == 'approved_by_provider')
                     {{__('user.Approved')}}
                     @elseif ($order->order_status == 'order_decliened_by_provider')

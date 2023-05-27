@@ -52,10 +52,10 @@
                                 @elseif ($order->payment_status == 'success')
                                 <p>{{__('user.Payment Status')}} : <span class="badge badge-success">{{__('user.Success')}}</span>
                                 @endif
-                                <p>{{__('user.Payment Gateway')}} : {{ $order->payment_method }}</p>
+                                {{-- <p>{{__('user.Payment Gateway')}} : {{ $order->payment_method }}</p>
                                 <p>{{__('user.Sub Total')}} : {{ $currency_icon->icon }}{{ $order->package_amount }}</p>
                                 <p>{{__('user.Additional')}} : {{ $currency_icon->icon }}{{ $order->additional_amount }}</p>
-                                <p>{{__('user.Total Amount')}} : {{ $currency_icon->icon }}{{ $order->total_amount }}</p>
+                                <p>{{__('user.Total Amount')}} : {{ $currency_icon->icon }}{{ $order->total_amount }}</p> --}}
 
                                 <h6 class="mt-4">{{__('user.Order Status')}}</h6>
                                 <hr>

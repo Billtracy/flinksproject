@@ -253,14 +253,14 @@ class PaymentController extends Controller
             );
 
             $user = Auth::guard('web')->user();
-            $bankPayment = BankPayment::select('id','status','account_info','image')->first();
-            $stripe = StripePayment::first();
-            $paypal = PaypalPayment::first();
-            $razorpay = RazorpayPayment::first();
-            $flutterwave = Flutterwave::first();
-            $mollie = PaystackAndMollie::first();
-            $paystack = $mollie;
-            $instamojoPayment = InstamojoPayment::first();
+            // $bankPayment = BankPayment::select('id','status','account_info','image')->first();
+            // $stripe = StripePayment::first();
+            // $paypal = PaypalPayment::first();
+            // $razorpay = RazorpayPayment::first();
+            // $flutterwave = Flutterwave::first();
+            // $mollie = PaystackAndMollie::first();
+            // $paystack = $mollie;
+            // $instamojoPayment = InstamojoPayment::first();
 
             $selected_theme = Session::get('selected_theme');
             if ($selected_theme == 'theme_one'){
@@ -283,16 +283,16 @@ class PaymentController extends Controller
                 'what_you_will_get' => $what_you_will_get,
                 'extra_services' => $extra_services,
                 'currency_icon' => $currency_icon,
-                'bankPayment' => $bankPayment,
-                'stripe' => $stripe,
-                'paypal' => $paypal,
-                'razorpay' => $razorpay,
-                'total_price' => $total_price,
-                'flutterwave' => $flutterwave,
+                // 'bankPayment' => $bankPayment,
+                // 'stripe' => $stripe,
+                // 'paypal' => $paypal,
+                // 'razorpay' => $razorpay,
+                // 'total_price' => $total_price,
+                // 'flutterwave' => $flutterwave,
                 'user' => $user,
-                'mollie' => $mollie,
-                'instamojoPayment' => $instamojoPayment,
-                'paystack' => $paystack,
+                // 'mollie' => $mollie,
+                // 'instamojoPayment' => $instamojoPayment,
+                // 'paystack' => $paystack,
             ]);
         }else{
             // $rules = [

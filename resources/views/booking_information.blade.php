@@ -120,7 +120,7 @@
                                     <li>{{ $package_feature }}</li>
                                 @endforeach
                             </ul>
-                            <div class="wsus__booking_cost">
+                            {{-- <div class="wsus__booking_cost">
                                 <p>{{__('user.Package Fee')}} <span>{{ $currency_icon->icon }}{{ $service->price }}</span></p>
                                 <ul>
                                     @if ($extra_services->ids)
@@ -133,7 +133,7 @@
                                 </ul>
                                 <h4>{{__('user.Extra Service')}} <span>{{ $currency_icon->icon }}{{ $extra_services->extra_total }}</span></h4>
                                 <p>{{__('user.Subtotal')}} <span>{{ $currency_icon->icon }}{{ $extra_services->sub_total }}</span></p>
-                                <h5>{{__('user.Total')}} <span>{{ $currency_icon->icon }}{{ $extra_services->total }}</span></h5>
+                                <h5>{{__('user.Total')}} <span>{{ $currency_icon->icon }}{{ $extra_services->total }}</span></h5> --}}
                             </div>
                         </div>
                     </div>

@@ -64,12 +64,12 @@
                                 <div class="wsus__services_text">
                                     <ul class="d-flex justify-content-between">
                                         <li><a href="{{ route('services',['category'=> $service->category->slug]) }}">{{ $service->category->name }}</a></li>
-                                        <li>{{ $currency_icon->icon }}{{ $service->price }}</li>
+                                        {{-- <li>{{ $currency_icon->icon }}{{ $service->price }}</li> --}}
                                     </ul>
                                     <a class="title" href="{{ route('service', $service->slug) }}">{{ $service->name }}</a>
                                     <div
                                         class="single_service_footer d-flex flex-wrap justify-content-between align-items-center">
-                                        
+
 
                                         @php
                                             $reviewQty = $service->totalReview;

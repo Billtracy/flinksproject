@@ -60,9 +60,9 @@
                         </div>
                     </div>
 
-                    <ul class="wsus__booking_payment d-flex flex-wrap">
+                    {{-- <ul class="wsus__booking_payment d-flex flex-wrap"> --}}
 
-                        @if ($stripe->status == 1)
+                        {{-- @if ($stripe->status == 1)
                             <li>
                                 <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#stripePayment">
                                     <img src="{{ asset($stripe->image) }}" alt="payment img" class="img-fluid w-100">
@@ -144,10 +144,10 @@
                                     <img src="{{ asset($bankPayment->image) }}" alt="payment img" class="img-fluid w-100">
                                 </a>
                             </li>
-                        @endif
+                        @endif --}}
 
 
-                    </ul>
+                    {{-- </ul> --}}
                 </div>
                 <div class="col-xl-4 col-lg-4">
                     <div class="wsus__sidebar" id="sticky_sidebar">
@@ -158,7 +158,7 @@
                                     <li>{{ $package_feature }}</li>
                                 @endforeach
                             </ul>
-                            <div class="wsus__booking_cost">
+                            {{-- <div class="wsus__booking_cost">
                                 <p>{{__('user.Package Fee')}} <span>{{ $currency_icon->icon }}{{ $service->price }}</span></p>
                                 <ul>
                                     @if ($extra_services->ids)
@@ -172,8 +172,13 @@
                                 <h4>{{__('user.Extra Service')}} <span>{{ $currency_icon->icon }}{{ $extra_services->extra_total }}</span></h4>
                                 <p>{{__('user.Subtotal')}} <span>{{ $currency_icon->icon }}{{ $extra_services->sub_total }}</span></p>
                                 <h5>{{__('user.Total')}} <span>{{ $currency_icon->icon }}{{ $extra_services->total }}</span></h5>
-                            </div>
+                            </div> --}}
+
                         </div>
+                        <form method="POST" action="{{ route('bank-payment', $service->slug) }}" class="my-3">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Confirm Booking</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -184,7 +189,7 @@
     ==========================-->
 
     {{-- start stripe payment --}}
-    <div class="wsus__payment_modal modal fade" id="stripePayment" data-bs-backdrop="static" data-bs-keyboard="false"
+    {{-- <div class="wsus__payment_modal modal fade" id="stripePayment" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="stripePaymentLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -223,14 +228,13 @@
             </form>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     {{-- end stripe payment --}}
 
 
 
-    {{-- start bank payment modal --}}
-    <div class="wsus__payment_modal modal fade" id="bankPayment" data-bs-backdrop="static" data-bs-keyboard="false"
+    {{-- <div class="wsus__payment_modal modal fade" id="bankPayment" data-bs-backdrop="static" data-bs-keyboard="false"
         tabindex="-1" aria-labelledby="bankPaymentLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -260,12 +264,11 @@
                 </form>
             </div>
         </div>
-    </div>
-    {{-- end bank payment --}}
+    </div> --}}
 
 
     {{-- start stripe payment --}}
-    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+    {{-- <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script>
     $(function() {
         var $form = $(".require-validation");
@@ -335,10 +338,8 @@
         })
     });
 </script>
-    {{-- end stripe payment --}}
 
 
-{{-- start flutterwave payment --}}
 <script src="https://checkout.flutterwave.com/v3.js"></script>
 @php
     $payable_amount = $total_price * $flutterwave->currency_rate;
@@ -414,9 +415,6 @@
 
     }
 </script>
-{{-- end flutterwave payment --}}
-
-{{-- paystack start --}}
 
 
 <script src="https://js.paystack.co/v1/inline.js"></script>
@@ -483,6 +481,6 @@ function payWithPaystack(){
         error: function(err) {}
     });
 }
-</script>
+</script> --}}
 
 @endsection
