@@ -24,12 +24,12 @@
                                     <ul class="nav nav-pills flex-column" id="myTab4" role="tablist">
 
 
-                                        <li class="nav-item border rounded mb-1">
+                                        {{-- <li class="nav-item border rounded mb-1">
                                             <a class="nav-link active" id="general-setting-tab" data-toggle="tab" href="#generalSettingTab" role="tab" aria-controls="generalSettingTab" aria-selected="true">{{__('admin.General Setting')}}</a>
-                                        </li>
+                                        </li> --}}
 
                                         <li class="nav-item border rounded mb-1">
-                                            <a class="nav-link" id="logo-tab" data-toggle="tab" href="#logoTab" role="tab" aria-controls="logoTab" aria-selected="true">{{__('admin.Logo and Favicon')}}</a>
+                                            <a class="nav-link active" id="logo-tab" data-toggle="tab" href="#logoTab" role="tab" aria-controls="logoTab" aria-selected="true">{{__('admin.Logo and Favicon')}}</a>
                                         </li>
 
                                         <li class="nav-item border rounded mb-1">
@@ -79,8 +79,7 @@
                                 <div class="col-12 col-sm-12 col-md-9">
                                     <div class="border rounded">
                                         <div class="tab-content no-padding" id="settingsContent">
-
-                                            <div class="tab-pane fade show active" id="generalSettingTab" role="tabpanel" aria-labelledby="general-setting-tab">
+                                            {{-- <div class="tab-pane fade show active" id="generalSettingTab" role="tabpanel" aria-labelledby="general-setting-tab">
                                                 <div class="card m-0">
                                                     <div class="card-body">
                                                       <form action="{{ route('admin.update-general-setting') }}" method="POST" enctype="multipart/form-data">
@@ -591,9 +590,9 @@
                                                       </form>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
-                                            <div class="tab-pane fade" id="logoTab" role="tabpanel" aria-labelledby="logo-tab">
+                                            <div class="tab-pane fade show active" id="logoTab" role="tabpanel" aria-labelledby="logo-tab">
                                                 <div class="card m-0">
                                                     <div class="card-body">
                                                         <form action="{{ route('admin.update-logo-favicon') }}" method="POST" enctype="multipart/form-data">

@@ -139,13 +139,13 @@
                                                 <td>{{ $name }}</td>
                                                 <td>{{__('admin.User Name')}}</td>
                                             </tr>
-                                            <tr>
+                                            {{-- <tr>
                                                 @php
                                                     $total_amount="{{total_amount}}";
                                                 @endphp
                                                 <td>{{ $total_amount }}</td>
                                                 <td>{{__('admin.Total amount')}}</td>
-                                            </tr>
+                                            </tr> --}}
                                             <tr>
                                                 @php
                                                     $payment_method="{{payment_method}}";
@@ -205,13 +205,13 @@
                                                 <td>{{__('admin.Order Id')}}</td>
                                             </tr>
 
-                                            <tr>
+                                            {{-- <tr>
                                                 @php
                                                     $name="{{amount}}";
                                                 @endphp
                                                 <td>{{ $name }}</td>
                                                 <td>{{__('admin.Total Amount')}}</td>
-                                            </tr>
+                                            </tr> --}}
 
                                             <tr>
                                                 @php
@@ -238,14 +238,14 @@
                                                 <td>{{ $name }}</td>
                                                 <td>{{__('admin.Order Id')}}</td>
                                             </tr>
-
+{{--
                                             <tr>
                                                 @php
                                                     $name="{{amount}}";
                                                 @endphp
                                                 <td>{{ $name }}</td>
                                                 <td>{{__('admin.Total Amount')}}</td>
-                                            </tr>
+                                            </tr> --}}
 
                                             <tr>
                                                 @php
