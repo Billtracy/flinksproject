@@ -580,7 +580,7 @@ span.flatpickr-weekday {
 
 .flatpickr-day.today {
     border-color: #959ea9;
-    background: var(--colorPrimary) !important;
+    background: #000 !important;
     color: var(--colorWhite) !important;
 }
 

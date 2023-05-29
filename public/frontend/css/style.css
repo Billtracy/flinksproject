@@ -6518,12 +6518,12 @@ footer {
 
 .flatpickr-day.today:hover,
 .flatpickr-day.today:focus {
-    background: var(--colorPrimary) !important;
-    border-color: var(--colorPrimary) !important;
+    background: #000 !important;
+    border-color: #000 !important;
 }
 
 .flatpickr-day.today {
-    border-color: var(--colorPrimary) !important;
+    border-color: #000 !important;
 }
 
 .flatpickr-current-month .flatpickr-monthDropdown-months,
