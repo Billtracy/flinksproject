@@ -87,6 +87,7 @@ class RegisterController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
+        $user->status = 1;
         $user->verify_token = Str::random(100);
         $user->save();
 
