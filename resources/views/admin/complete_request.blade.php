@@ -24,8 +24,8 @@
                             <thead>
                                 <tr>
                                     <th >{{__('admin.SN')}}</th>
-                                    <th >{{__('admin.Client')}}</th>
-                                    <th >{{__('admin.Total Amount')}}</th>
+                                    {{-- <th >{{__('admin.Client')}}</th> --}}
+                                    {{-- <th >{{__('admin.Total Amount')}}</th> --}}
                                     <th >{{__('admin.Order Id')}}</th>
                                     <th >{{__('admin.Action')}}</th>
                                   </tr>
@@ -34,10 +34,10 @@
                                 @foreach ($completeRequests as $index => $completeRequest)
                                     <tr>
                                         <td>{{ ++$index }}</td>
-                                        <td>
+                                        {{-- <td>
                                             <a href="{{ route('admin.provider-show', $completeRequest->provider_id) }}">{{ $completeRequest->provider->name }}</a>
-                                        </td>
-                                        <td>{{ $currency_icon->icon }}{{ $completeRequest->order->total_amount }}</td>
+                                        </td> --}}
+                                        {{-- <td>{{ $currency_icon->icon }}{{ $completeRequest->order->total_amount }}</td> --}}
                                         <td>{{ $completeRequest->order->order_id }}</td>
                                         <td>
 
