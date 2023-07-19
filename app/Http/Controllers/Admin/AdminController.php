@@ -18,7 +18,7 @@ class AdminController extends Controller
 
     public function index(){
         $logedInAdmin = Auth::guard('admin')->user();
-        if($logedInAdmin->admin_type == 1){
+        if($logedInAdmin->admin_type == 1 || $logedInAdmin->admin_type == 2){
             $admins = Admin::orderBy('id','asc')->get();
 
             return view('admin.admin', compact('admins'));
